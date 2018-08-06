@@ -37,7 +37,7 @@
 			$_SESSION['username'] = $data['username'];
 			$_SESSION['akses'] = $hakakses;
 			$_SESSION['sukses'] = 'Selamat Datang.';
-			header('Location:../../dashboard.php?page=home');
+			header('Location:../../dashboard.php?page=beranda');
 			die();
 		}
 	} else {
