@@ -45,8 +45,8 @@
                     <p>Beranda</p>
                 </a>
             </li>
-            <li class="">
-                <a href="?page=beranda">
+            <li class="<?php echo ($_GET['page'] == 'kelola-rw')?'active':''; ?>">
+                <a href="?page=kelola-rw">
                     <i class="material-icons">description</i>
                     <p>Kelola RW</p>
                 </a>

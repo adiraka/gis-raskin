@@ -56,7 +56,9 @@
 	                		} elseif ($page == 'keluar') {
 	                			include 'views/dashboard/keluar.php';
 	                		} elseif ($page == 'kelola-rw') {
-	                			
+	                			include 'views/dashboard/rw/main.php';
+	                		} elseif ($page == 'tambah-rw') {
+	                			include 'views/dashboard/rw/add.php';
 	                		} elseif ($page == 'kelola-rt') {
 	                			
 	                		} else {
@@ -85,6 +87,8 @@
     <script src="assets/vendors/material-dashboard-pro/assets/js/jquery.validate.min.js"></script>
     <script src="assets/vendors/material-dashboard-pro/assets/js/jquery.tagsinput.js"></script>
     <script src="assets/vendors/material-dashboard-pro/assets/js/material-dashboard.js"></script>
+    <script src="assets/vendors/material-dashboard-pro/assets/js/jquery.datatables.js"></script>
+    <script src="assets/js/app.js"></script>
 
 </body>
 
