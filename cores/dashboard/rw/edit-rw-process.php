@@ -15,14 +15,15 @@
 	}
 
 	$conn = koneksi();
+	$rw_id = sanitizeThis($_POST['rw_id']);
 	$nama = sanitizeThis($_POST['nama']);
 	$ketua = sanitizeThis($_POST['ketua']);
 
-	$query = "INSERT INTO rw (nama_rw, ketua_rw) VALUES ('$nama', '$ketua')";
+	$query = "UPDATE rw SET nama_rw = '$nama', ketua_rw = '$ketua' WHERE id = '$rw_id'";
 	$procs = mysqli_query($conn, $query);
 
 	if ($procs) {
-		$_SESSION['sukses'] = 'Data RW berhasil ditambahkan.';
+		$_SESSION['sukses'] = 'Data RW berhasil diubah.';
 		header('Location:../../../dashboard.php?page=kelola-rw'); 
 		die();
 	} else {

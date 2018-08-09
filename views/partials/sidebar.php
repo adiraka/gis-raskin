@@ -51,20 +51,20 @@
                     <p>Kelola RW</p>
                 </a>
             </li>
-            <li class="">
-                <a href="?page=beranda">
+            <li class="<?php echo ($_GET['page'] == 'kelola-rt')?'active':''; ?>">
+                <a href="?page=kelola-rt">
                     <i class="material-icons">description</i>
                     <p>Kelola RT</p>
                 </a>
             </li>
-            <li class="">
-                <a href="?page=beranda">
+            <li class="<?php echo ($_GET['page'] == 'kelola-bantuan')?'active':''; ?>">
+                <a href="?page=kelola-bantuan">
                     <i class="material-icons">card_giftcard</i>
                     <p>Kelola Bantuan</p>
                 </a>
             </li>
-            <li class="">
-                <a href="?page=beranda">
+            <li class="<?php echo ($_GET['page'] == 'kelola-penerima')?'active':''; ?>">
+                <a href="?page=kelola-penerima">
                     <i class="material-icons">people</i>
                     <p>Kelola Penerima</p>
                 </a>
