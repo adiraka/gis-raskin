@@ -86,6 +86,18 @@
                                 include 'views/dashboard/penerima/main.php';
                             } elseif ($page == 'tambah-penerima') {
                                 include 'views/dashboard/penerima/add.php';
+                            } elseif ($page == 'ubah-penerima') {
+                                include 'views/dashboard/penerima/edit.php';
+                            } elseif ($page == 'hapus-penerima') {
+                                include 'views/dashboard/penerima/delete.php';
+                            } elseif ($page == 'kelola-pemberian') {
+                                include 'views/dashboard/pemberian/main.php';
+                            } elseif ($page == 'tambah-pemberian') {
+                                include 'views/dashboard/pemberian/add.php';
+                            } elseif ($page == 'ubah-pemberian') {
+                                include 'views/dashboard/pemberian/edit.php';
+                            } elseif ($page == 'hapus-pemberian') {
+                                include 'views/dashboard/pemberian/delete.php';
                             } else {
 	                			echo 'Halaman yang anda cari tidak ditemukan.';
 	                		}
@@ -114,6 +126,8 @@
     <script src="assets/vendors/material-dashboard-pro/assets/js/material-dashboard.js"></script>
     <script src="assets/vendors/material-dashboard-pro/assets/js/jquery.datatables.js"></script>
     <script src="assets/vendors/material-dashboard-pro/assets/js/jquery.select-bootstrap.js"></script>
+    <script src="assets/vendors/material-dashboard-pro/assets/js/moment.min.js"></script>
+    <script src="assets/vendors/material-dashboard-pro/assets/js/bootstrap-datetimepicker.js"></script>
     <script src="assets/js/app.js"></script>
 
 </body>

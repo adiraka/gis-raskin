@@ -69,8 +69,8 @@
                     <p>Kelola Penerima</p>
                 </a>
             </li>
-            <li class="">
-                <a href="?page=beranda">
+            <li class="<?php echo ($_GET['page'] == 'kelola-pemberian')?'active':''; ?>">
+                <a href="?page=kelola-pemberian">
                     <i class="material-icons">how_to_reg</i>
                     <p>Pemberian Bantuan</p>
                 </a>

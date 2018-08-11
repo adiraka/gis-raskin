@@ -16,10 +16,14 @@
                 </a><br><hr>
                 <p>Berikut adalah tabel data Penerima yang terdaftar :</p>
                 <div class="material-datatables">
-                    <table id="data-rt" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                    <table id="data-rt" class="table table-striped table-no-bordered table-hover nowrap" cellspacing="0" width="100%" style="width:100%">
                         <?php  
                             $list_data = [];
-                            $query = "SELECT * FROM bantuan";
+                            $query = "
+                                SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
+                                FROM penerima, rw, rt, bantuan 
+                                WHERE rw.id = rt.rw_id AND rt.id = penerima.rt_id AND bantuan.id = penerima.bantuan_id
+                            ";
                             $procs = mysqli_query($conn, $query);
                             while($row = mysqli_fetch_array($procs)) {
                                 $list_data[] = $row;
@@ -28,9 +32,14 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nama Bantuan</th>
-                                <th>Banyak</th>
-                                <th>Nominal (Rp)</th>
+                                <th>No KK</th>
+                                <th>Nama</th>
+                                <th>Alamat</th>
+                                <th>RW/RT</th>
+                                <th>Telepon</th>
+                                <th>Jenis Bantuan</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
                                 <th class="disabled-sorting">Aksi</th>
                             </tr>
                         </thead>
@@ -38,12 +47,17 @@
                             <?php foreach ($list_data as $key => $value): ?>
                                 <tr>
                                     <td><?php echo $key+1 ?></td>
-                                    <td><?php echo $value['nama_bantuan'] ?></td>
-                                    <td><?php echo $value['banyak_bantuan'].' '.$value['satuan'] ?></td>
-                                    <td><?php echo number_format($value['nominal']) ?></td>
+                                    <td><?php echo $value['no_kk'] ?></td>
+                                    <td><?php echo $value['kepala_keluarga'] ?></td>
+                                    <td><?php echo $value['alamat'] ?></td>
+                                    <td><?php echo 'RW. '.$value['nama_rw'].'/RT. '.$value['nama_rt'] ?></td>
+                                    <td><?php echo $value['telepon'] ?></td>
+                                    <td><?php echo $value['nama_bantuan'].' '.$value['banyak_bantuan'].$value['satuan'].' (Rp.'.number_format($value['nominal']).')' ?></td>
+                                    <td><?php echo $value['latitude'] ?></td>
+                                    <td><?php echo $value['longitude'] ?></td>
                                     <td>
-                                        <a href="?page=ubah-bantuan&id=<?php echo $value['id'] ?>" class="btn btn-round btn-simple btn-success btn-icon"><i class="material-icons">create</i></a>
-                                        <a href="?page=hapus-bantuan&id=<?php echo $value['id'] ?>" class="btn btn-round btn-simple btn-danger btn-icon"><i class="material-icons">close</i></a>
+                                        <a href="?page=ubah-penerima&id=<?php echo $value['id'] ?>" class="btn btn-round btn-simple btn-success btn-icon"><i class="material-icons">create</i></a>
+                                        <a href="?page=hapus-penerima&id=<?php echo $value['id'] ?>" class="btn btn-round btn-simple btn-danger btn-icon"><i class="material-icons">close</i></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
