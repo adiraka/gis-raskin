@@ -6,35 +6,35 @@
 
 	if ($_POST['no_kk'] == NULL) {
 		$_SESSION['gagal'] = 'Kolom Nomor Kartu Keluarga tidak boleh kosong.';
-		header('Location:../../../dashboard.php?page=tambah-penerima'); 
+		header('Location:../../../dashboard.php?page=ubah-penerima&id='.$_POST['penerima_id']); 
 		die();
 	} elseif ($_POST['kepala_keluarga'] == NULL) {
 		$_SESSION['gagal'] = 'Kolom Nama Kepala Keluarga tidak boleh kosong.';
-		header('Location:../../../dashboard.php?page=tambah-penerima'); 
+		header('Location:../../../dashboard.php?page=ubah-penerima&id='.$_POST['penerima_id']); 
 		die();
 	} elseif ($_POST['alamat'] == NULL) {
 		$_SESSION['gagal'] = 'Kolom Alamat tidak boleh kosong.';
-		header('Location:../../../dashboard.php?page=tambah-penerima'); 
+		header('Location:../../../dashboard.php?page=ubah-penerima&id='.$_POST['penerima_id']); 
 		die();
 	} elseif ($_POST['rt_id'] == NULL) {
 		$_SESSION['gagal'] = 'Kolom Nama RT tidak boleh kosong.';
-		header('Location:../../../dashboard.php?page=tambah-penerima'); 
+		header('Location:../../../dashboard.php?page=ubah-penerima&id='.$_POST['penerima_id']); 
 		die();
 	} elseif ($_POST['telepon'] == NULL) {
 		$_SESSION['gagal'] = 'Kolom Telepon tidak boleh kosong.';
-		header('Location:../../../dashboard.php?page=tambah-penerima'); 
+		header('Location:../../../dashboard.php?page=ubah-penerima&id='.$_POST['penerima_id']); 
 		die();
 	} elseif ($_POST['latitude'] == NULL) {
 		$_SESSION['gagal'] = 'Kolom Latitude tidak boleh kosong.';
-		header('Location:../../../dashboard.php?page=tambah-penerima'); 
+		header('Location:../../../dashboard.php?page=ubah-penerima&id='.$_POST['penerima_id']); 
 		die();
 	} elseif ($_POST['longitude'] == NULL) {
 		$_SESSION['gagal'] = 'Kolom Longitude tidak boleh kosong.';
-		header('Location:../../../dashboard.php?page=tambah-penerima'); 
+		header('Location:../../../dashboard.php?page=ubah-penerima&id='.$_POST['penerima_id']); 
 		die();
 	} elseif ($_POST['bantuan_id'] == NULL) {
 		$_SESSION['gagal'] = 'Kolom Jenis Bantuan tidak boleh kosong.';
-		header('Location:../../../dashboard.php?page=tambah-penerima'); 
+		header('Location:../../../dashboard.php?page=ubah-penerima&id='.$_POST['penerima_id']); 
 		die();
 	}
 

@@ -43,9 +43,12 @@ CREATE TABLE `pemberian` (
   `tanggal` date NOT NULL,
   `user_akun_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pemberian` */
+
+insert  into `pemberian`(`id`,`bulan`,`tahun`,`penerima_id`,`bantuan_id`,`tanggal`,`user_akun_id`) values 
+(2,'8',2018,1,2,'2018-08-08',1);
 
 /*Table structure for table `penerima` */
 
@@ -55,16 +58,19 @@ CREATE TABLE `penerima` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `no_kk` varchar(16) NOT NULL,
   `kepala_keluarga` varchar(50) NOT NULL,
-  `alamat` text NOT NULL,
+  `alamat` varchar(150) NOT NULL,
   `telepon` varchar(13) NOT NULL,
   `rt_id` int(11) NOT NULL,
   `bantuan_id` int(11) NOT NULL,
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `penerima` */
+
+insert  into `penerima`(`id`,`no_kk`,`kepala_keluarga`,`alamat`,`telepon`,`rt_id`,`bantuan_id`,`latitude`,`longitude`) values 
+(1,'1372022102070002','Budi Harianto B','Koto Panjang','081268280648',2,2,122.331,-123.123);
 
 /*Table structure for table `rt` */
 

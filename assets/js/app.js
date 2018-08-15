@@ -48,7 +48,7 @@ $(function(){
 	});
 
 	$('.datepicker').datetimepicker({
-		format: 'YYYY/MM/DD',
+		format: 'YYYY-MM-DD',
 		icons: {
 			time: "fa fa-clock-o",
 			date: "fa fa-calendar",
