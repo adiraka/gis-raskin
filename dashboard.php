@@ -98,6 +98,8 @@
                                 include 'views/dashboard/pemberian/edit.php';
                             } elseif ($page == 'hapus-pemberian') {
                                 include 'views/dashboard/pemberian/delete.php';
+                            } elseif ($page == 'main-laporan') {
+                                include 'views/dashboard/laporan/main.php';
                             } else {
 	                			echo 'Halaman yang anda cari tidak ditemukan.';
 	                		}

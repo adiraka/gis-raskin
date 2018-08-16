@@ -1,10 +1,10 @@
 <div class="sidebar" data-active-color="green" data-background-color="white" data-image="assets/vendors/material-dashboard-pro/assets/img/sidebar-1.jpg">
     <div class="logo">
         <a href="?page=beranda" class="simple-text logo-mini">
-            DS
+            MY
         </a>
         <a href="?page=beranda" class="simple-text logo-normal">
-            SPDPKM
+            DASHBOARD
         </a>
     </div>
     <div class="sidebar-wrapper">
@@ -75,8 +75,8 @@
                     <p>Pemberian Bantuan</p>
                 </a>
             </li>
-            <li class="">
-                <a href="?page=beranda">
+            <li class="<?php echo ($_GET['page'] == 'main-laporan')?'active':''; ?>">
+                <a href="?page=main-laporan">
                     <i class="material-icons">assignment</i>
                     <p>Laporan</p>
                 </a>

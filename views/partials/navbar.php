@@ -13,7 +13,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="?page=beranda"> Staff Dashboard</a>
+            <a class="navbar-brand" href="?page=beranda"> STAFF</a>
         </div>
     </div>
 </nav>
