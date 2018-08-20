@@ -8,8 +8,7 @@
         <h6 class="category text-gray"><?php echo $_SESSION['akses']; ?></h6>
         <h4 class="card-title"><?php echo $profil['nama'] ?></h4>
         <p class="description">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
+            NIP. <?php echo $profil['nip'] ?>
         </p>
     </div>
 </div>

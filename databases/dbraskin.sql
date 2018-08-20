@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v12.5.1 (32 bit)
-MySQL - 10.1.31-MariaDB : Database - dbraskin
+SQLyog Ultimate v12.4.3 (64 bit)
+MySQL - 10.1.32-MariaDB : Database - dbraskin
 *********************************************************************
 */
 
@@ -43,12 +43,13 @@ CREATE TABLE `pemberian` (
   `tanggal` date NOT NULL,
   `user_akun_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pemberian` */
 
 insert  into `pemberian`(`id`,`bulan`,`tahun`,`penerima_id`,`bantuan_id`,`tanggal`,`user_akun_id`) values 
-(2,'8',2018,1,2,'2018-08-08',1);
+(3,'8',2018,1,2,'2018-08-13',1),
+(4,'8',2018,3,2,'2018-08-05',1);
 
 /*Table structure for table `penerima` */
 
@@ -65,12 +66,14 @@ CREATE TABLE `penerima` (
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `penerima` */
 
 insert  into `penerima`(`id`,`no_kk`,`kepala_keluarga`,`alamat`,`telepon`,`rt_id`,`bantuan_id`,`latitude`,`longitude`) values 
-(1,'1372022102070002','Budi Harianto B','Koto Panjang','081268280648',2,2,122.331,-123.123);
+(1,'1372022102070002','Budi Harianto B','Koto Panjang','081268280648',2,2,122.331,-123.123),
+(2,'1372726103690001','Leni Aroza','Koto Panjang','081343214321',2,2,122.331,-123.123),
+(3,'1372025509780021','Joni Amza','Koto Panjang','085257468228',2,2,122.331,-123.123);
 
 /*Table structure for table `rt` */
 
@@ -118,13 +121,14 @@ CREATE TABLE `user_akun` (
   `hak_akses` enum('admin','staff') NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '0',
   `nama` varchar(50) NOT NULL,
+  `nip` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `user_akun` */
 
-insert  into `user_akun`(`id`,`username`,`password`,`hak_akses`,`status`,`nama`) values 
-(1,'staff','1253208465b1efa876f982d8a9e73eef','staff',1,'Agung Fernando');
+insert  into `user_akun`(`id`,`username`,`password`,`hak_akses`,`status`,`nama`,`nip`) values 
+(1,'staff','1253208465b1efa876f982d8a9e73eef','staff',1,'RICO SAPUTRA S, STP','199103132014061001');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
