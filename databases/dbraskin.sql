@@ -71,9 +71,9 @@ CREATE TABLE `penerima` (
 /*Data for the table `penerima` */
 
 insert  into `penerima`(`id`,`no_kk`,`kepala_keluarga`,`alamat`,`telepon`,`rt_id`,`bantuan_id`,`latitude`,`longitude`) values 
-(1,'1372022102070002','Budi Harianto B','Koto Panjang','081268280648',2,2,122.331,-123.123),
-(2,'1372726103690001','Leni Aroza','Koto Panjang','081343214321',2,2,122.331,-123.123),
-(3,'1372025509780021','Joni Amza','Koto Panjang','085257468228',2,2,122.331,-123.123);
+(1,'1372022102070002','Budi Harianto B','Koto Panjang','081268280648',2,2,-0.790625,100.656),
+(2,'1372726103690001','Leni Aroza','Koto Panjang','081343214321',2,2,-0.790728,100.659),
+(3,'1372025509780021','Joni Amza','Koto Panjang','085257468228',2,2,-0.79302,100.657);
 
 /*Table structure for table `rt` */
 
