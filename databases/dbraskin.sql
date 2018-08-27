@@ -72,7 +72,7 @@ CREATE TABLE `penerima` (
 
 insert  into `penerima`(`id`,`no_kk`,`kepala_keluarga`,`alamat`,`telepon`,`rt_id`,`bantuan_id`,`latitude`,`longitude`) values 
 (1,'1372022102070002','Budi Harianto B','Koto Panjang','081268280648',2,2,-0.790625,100.656),
-(2,'1372726103690001','Leni Aroza','Koto Panjang','081343214321',2,2,-0.790728,100.659),
+(2,'1372726103690001','Leni Aroza','Koto Panjang','081343214321',2,2,-0.791547,100.657),
 (3,'1372025509780021','Joni Amza','Koto Panjang','085257468228',2,2,-0.79302,100.657);
 
 /*Table structure for table `rt` */
@@ -85,12 +85,17 @@ CREATE TABLE `rt` (
   `nama_rt` varchar(10) NOT NULL,
   `ketua_rt` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `rt` */
 
 insert  into `rt`(`id`,`rw_id`,`nama_rt`,`ketua_rt`) values 
-(2,1,'01','Ahmad S');
+(2,1,'01','Ahmad S'),
+(3,1,'02','Bujang Kapak'),
+(4,1,'03','Budi Pangabean'),
+(5,2,'01','Soni Kaciak'),
+(6,2,'02','Riko'),
+(7,3,'01','Surya Paloh');
 
 /*Table structure for table `rw` */
 
