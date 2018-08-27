@@ -67,7 +67,7 @@
 						</h6>
 
 						<h4 class="card-title">
-							<a href="index.html#pablo">5 Common Legal Mistakes That Can Trip-Up Your Startup</a>
+							<a href="index.html#pablo">Peta Persebaran Keluarga Miskin Pada Kelurahan Koto Panjang</a>
 						</h4>
 
 						<br>
@@ -143,7 +143,7 @@
     <script>
     	var map;
     	var markerList = <?php echo $listMarker; ?>;
-    	console.log(markerList);
+
     	function initMap() {
     		map = new google.maps.Map(document.getElementById('map'), {
     			center: {lat: -0.792288, lng: 100.656306},
@@ -166,7 +166,10 @@
     				icon: icon
     			});
     			marker.setMap(map);
-    			var contentStr = 'asdasdasd';
+    			var contentStr = '<div class="text-center">';
+    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br><br>' + data.alamat;
+    				contentStr += '<br>' + data.rt_rw;
+    				contentStr += '</div>';
     			var infowindow = new google.maps.InfoWindow({
     				content: contentStr
     			});
