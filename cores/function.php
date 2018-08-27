@@ -80,4 +80,16 @@
 		return json_encode($listMarker);
 	}
 
+	function getListRtByRw($rw_id) {
+		$list_data = [];
+		$conn = koneksi();
+		$query = "SELECT * FROM rt WHERE rw_id ='$rw_id' ORDER BY nama_rt";
+		$procs = mysqli_query($conn, $query);
+		while($row = mysqli_fetch_array($procs)) {
+			$list_data[] = $row;
+		}
+
+		return $list_data;
+	}
+
 ?>
