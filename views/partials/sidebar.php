@@ -75,10 +75,16 @@
                     <p>Pemberian Bantuan</p>
                 </a>
             </li>
-            <li class="<?php echo ($_GET['page'] == 'main-laporan')?'active':''; ?>">
-                <a href="?page=main-laporan">
+            <li class="<?php echo ($_GET['page'] == 'laporan-bulanan')?'active':''; ?>">
+                <a href="?page=laporan-bulanan">
                     <i class="material-icons">assignment</i>
-                    <p>Laporan</p>
+                    <p>Laporan Bulanan</p>
+                </a>
+            </li>
+            <li class="<?php echo ($_GET['page'] == 'laporan-tahunan')?'active':''; ?>">
+                <a href="?page=laporan-tahunan">
+                    <i class="material-icons">assignment</i>
+                    <p>Laporan Tahunan</p>
                 </a>
             </li>
         </ul>

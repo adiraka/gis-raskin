@@ -32,6 +32,8 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="assets/vendors/material-dashboard-pro/assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -97,8 +99,10 @@
                                 include 'views/dashboard/pemberian/edit.php';
                             } elseif ($page == 'hapus-pemberian') {
                                 include 'views/dashboard/pemberian/delete.php';
-                            } elseif ($page == 'main-laporan') {
-                                include 'views/dashboard/laporan/main.php';
+                            } elseif ($page == 'laporan-bulanan') {
+                                include 'views/dashboard/laporan/bulan.php';
+                            } elseif ($page == 'laporan-tahunan') {
+                                include 'views/dashboard/laporan/tahun.php';
                             } else {
 	                			echo 'Halaman yang anda cari tidak ditemukan.';
 	                		}
@@ -117,7 +121,6 @@
 
     </div>
 
-    <script src="assets/vendors/material-dashboard-pro/assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="assets/vendors/material-dashboard-pro/assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="assets/vendors/material-dashboard-pro/assets/js/material.min.js" type="text/javascript"></script>
     <script src="assets/vendors/material-dashboard-pro/assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
