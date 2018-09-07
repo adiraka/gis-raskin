@@ -46,7 +46,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="login.php">
+						<a href="login.php" target="_blank">
 							<i class="material-icons">input</i>
 							LOGIN
 						</a>
@@ -142,10 +142,10 @@
 
 												$totalPenerima = 0;
 
-												foreach ($rwDT as $value) {
-													$rtDT = getListRtByRw($value['id']);
-													foreach ($rtDT as $value2) {
-														$countQ = mysqli_query($conn, "SELECT COUNT(id) AS jumlah FROM penerima WHERE rt_id = '".$value2['id']."' ");
+												foreach ($rwDT as $value2) {
+													$rtDT = getListRtByRw($value2['id']);
+													foreach ($rtDT as $value3) {
+														$countQ = mysqli_query($conn, "SELECT COUNT(id) AS jumlah FROM penerima WHERE rt_id = '".$value3['id']."' AND bantuan_id = '".$value['id']."'");
 														$jumlah = mysqli_fetch_assoc($countQ)['jumlah'];
 														$totalPenerima = $totalPenerima + $jumlah;
 														echo '<td class="text-center">'.$jumlah.' KK</td>';
@@ -173,7 +173,7 @@
 	<footer class="footer footer-white">
 		<div class="container text-center">
 			
-			2018 @ STMIK INDONESIA PADANG
+			<?php echo date('Y') ?> @ STMIK INDONESIA PADANG
 
 		</div>
 	</footer>
