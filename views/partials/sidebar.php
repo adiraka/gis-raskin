@@ -23,9 +23,15 @@
                 <div class="collapse" id="collapseExample">
                     <ul class="nav">
                         <li>
-                            <a href="user.html#">
+                            <a href="?page=ubah-profil">
                                 <span class="sidebar-mini">UP</span>
                                 <span class="sidebar-normal">Ubah Profil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="?page=ubah-password">
+                                <span class="sidebar-mini">UP</span>
+                                <span class="sidebar-normal">Ubah Password</span>
                             </a>
                         </li>
                         <li>

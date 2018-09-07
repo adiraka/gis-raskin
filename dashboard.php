@@ -110,6 +110,10 @@
                                 include 'views/dashboard/akun/add.php';
                             } elseif ($page == 'reset-password') {
                                 include 'views/dashboard/akun/reset.php';
+                            } elseif ($page == 'ubah-profil') {
+                                include 'views/dashboard/akun/edit-profil.php';
+                            } elseif ($page == 'ubah-password') {
+                                include 'views/dashboard/akun/edit-password.php';
                             } else {
 	                			echo 'Halaman yang anda cari tidak ditemukan.';
 	                		}
