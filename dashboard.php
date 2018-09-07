@@ -7,7 +7,8 @@
     $conn = koneksi();
 	$profil = getStaffProfil($_SESSION['id']);
 
-	if (!isset($_SESSION['username']) || $_SESSION['akses'] != 'staff') {
+	// if (!isset($_SESSION['username']) || $_SESSION['akses'] != 'staff') {
+    if (!isset($_SESSION['username'])) {
 		session_unset();
 		$_SESSION['gagal'] = 'Maaf anda tidak memiliki izin untuk mengakses halaman ini';
 		header('Location:login.php');
@@ -103,6 +104,12 @@
                                 include 'views/dashboard/laporan/bulan.php';
                             } elseif ($page == 'laporan-tahunan') {
                                 include 'views/dashboard/laporan/tahun.php';
+                            } elseif ($page == 'kelola-akun') {
+                                include 'views/dashboard/akun/main.php';
+                            } elseif ($page == 'tambah-akun') {
+                                include 'views/dashboard/akun/add.php';
+                            } elseif ($page == 'reset-password') {
+                                include 'views/dashboard/akun/reset.php';
                             } else {
 	                			echo 'Halaman yang anda cari tidak ditemukan.';
 	                		}

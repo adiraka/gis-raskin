@@ -28,11 +28,25 @@
 		$hakakses = $data['hak_akses'];
 		$status = $data['status'];
 		if ($status != 1) {
-			$_SESSION['gagal'] = 'Akun anda tidak dapat diakses untuk sementara waktu.';
+			$_SESSION['gagal'] = 'Akun anda tidak dapat diakses untuk sementara waktu. Silahkan hubungi Administrator.';
 			header('Location:../../login.php'); 
 			die();
 		}
 		if ($hakakses == 'staff') {
+			$_SESSION['id'] = $data['id'];		
+			$_SESSION['username'] = $data['username'];
+			$_SESSION['akses'] = $hakakses;
+			$_SESSION['sukses'] = 'Selamat Datang.';
+			header('Location:../../dashboard.php?page=beranda');
+			die();
+		} elseif ($hakakses == 'admin') {
+			$_SESSION['id'] = $data['id'];		
+			$_SESSION['username'] = $data['username'];
+			$_SESSION['akses'] = $hakakses;
+			$_SESSION['sukses'] = 'Selamat Datang.';
+			header('Location:../../dashboard.php?page=beranda');
+			die();
+		} elseif ($hakakses == 'lurah') {
 			$_SESSION['id'] = $data['id'];		
 			$_SESSION['username'] = $data['username'];
 			$_SESSION['akses'] = $hakakses;

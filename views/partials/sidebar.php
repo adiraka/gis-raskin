@@ -45,48 +45,78 @@
                     <p>Beranda</p>
                 </a>
             </li>
-            <li class="<?php echo ($_GET['page'] == 'kelola-rw')?'active':''; ?>">
-                <a href="?page=kelola-rw">
-                    <i class="material-icons">description</i>
-                    <p>Kelola RW</p>
-                </a>
-            </li>
-            <li class="<?php echo ($_GET['page'] == 'kelola-rt')?'active':''; ?>">
-                <a href="?page=kelola-rt">
-                    <i class="material-icons">description</i>
-                    <p>Kelola RT</p>
-                </a>
-            </li>
-            <li class="<?php echo ($_GET['page'] == 'kelola-bantuan')?'active':''; ?>">
-                <a href="?page=kelola-bantuan">
-                    <i class="material-icons">card_giftcard</i>
-                    <p>Kelola Bantuan</p>
-                </a>
-            </li>
-            <li class="<?php echo ($_GET['page'] == 'kelola-penerima')?'active':''; ?>">
-                <a href="?page=kelola-penerima">
-                    <i class="material-icons">people</i>
-                    <p>Kelola Penerima</p>
-                </a>
-            </li>
-            <li class="<?php echo ($_GET['page'] == 'kelola-pemberian')?'active':''; ?>">
-                <a href="?page=kelola-pemberian">
-                    <i class="material-icons">how_to_reg</i>
-                    <p>Pemberian Bantuan</p>
-                </a>
-            </li>
-            <li class="<?php echo ($_GET['page'] == 'laporan-bulanan')?'active':''; ?>">
-                <a href="?page=laporan-bulanan">
-                    <i class="material-icons">assignment</i>
-                    <p>Laporan Bulanan</p>
-                </a>
-            </li>
-            <li class="<?php echo ($_GET['page'] == 'laporan-tahunan')?'active':''; ?>">
-                <a href="?page=laporan-tahunan">
-                    <i class="material-icons">assignment</i>
-                    <p>Laporan Tahunan</p>
-                </a>
-            </li>
+            <?php  
+                if ($_SESSION['akses'] == 'staff') {
+            ?>
+                <li class="<?php echo ($_GET['page'] == 'kelola-rw')?'active':''; ?>">
+                    <a href="?page=kelola-rw">
+                        <i class="material-icons">description</i>
+                        <p>Kelola RW</p>
+                    </a>
+                </li>
+                <li class="<?php echo ($_GET['page'] == 'kelola-rt')?'active':''; ?>">
+                    <a href="?page=kelola-rt">
+                        <i class="material-icons">description</i>
+                        <p>Kelola RT</p>
+                    </a>
+                </li>
+                <li class="<?php echo ($_GET['page'] == 'kelola-bantuan')?'active':''; ?>">
+                    <a href="?page=kelola-bantuan">
+                        <i class="material-icons">card_giftcard</i>
+                        <p>Kelola Bantuan</p>
+                    </a>
+                </li>
+                <li class="<?php echo ($_GET['page'] == 'kelola-penerima')?'active':''; ?>">
+                    <a href="?page=kelola-penerima">
+                        <i class="material-icons">people</i>
+                        <p>Kelola Penerima</p>
+                    </a>
+                </li>
+                <li class="<?php echo ($_GET['page'] == 'kelola-pemberian')?'active':''; ?>">
+                    <a href="?page=kelola-pemberian">
+                        <i class="material-icons">how_to_reg</i>
+                        <p>Pemberian Bantuan</p>
+                    </a>
+                </li>
+                <li class="<?php echo ($_GET['page'] == 'laporan-bulanan')?'active':''; ?>">
+                    <a href="?page=laporan-bulanan">
+                        <i class="material-icons">assignment</i>
+                        <p>Laporan Bulanan</p>
+                    </a>
+                </li>
+                <li class="<?php echo ($_GET['page'] == 'laporan-tahunan')?'active':''; ?>">
+                    <a href="?page=laporan-tahunan">
+                        <i class="material-icons">assignment</i>
+                        <p>Laporan Tahunan</p>
+                    </a>
+                </li>
+            <?php
+                } elseif ($_SESSION['akses'] == 'admin') {
+            ?>
+                <li class="<?php echo ($_GET['page'] == 'kelola-akun')?'active':''; ?>">
+                    <a href="?page=kelola-akun">
+                        <i class="material-icons">people</i>
+                        <p>Kelola Akun</p>
+                    </a>
+                </li>
+            <?php
+                } elseif ($_SESSION['akses'] == 'lurah') {
+            ?>
+                <li class="<?php echo ($_GET['page'] == 'laporan-bulanan')?'active':''; ?>">
+                    <a href="?page=laporan-bulanan">
+                        <i class="material-icons">assignment</i>
+                        <p>Laporan Bulanan</p>
+                    </a>
+                </li>
+                <li class="<?php echo ($_GET['page'] == 'laporan-tahunan')?'active':''; ?>">
+                    <a href="?page=laporan-tahunan">
+                        <i class="material-icons">assignment</i>
+                        <p>Laporan Tahunan</p>
+                    </a>
+                </li>
+            <?php
+                }
+            ?>
         </ul>
     </div>
 </div>
