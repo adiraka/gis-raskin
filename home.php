@@ -2,6 +2,9 @@
 	include 'cores/function.php'; 
 	$conn = koneksi();
 	$listMarker = getMapMarkerList();
+	$listMarkerRw01 = getMapMarkerListRw01();
+	$listMarkerRw02 = getMapMarkerListRw02();
+	$listMarkerRw03 = getMapMarkerListRw03();
 ?>
 <!doctype html>
 <html lang="en">
@@ -68,20 +71,35 @@
 
 						<h4 class="card-title">
 							<a href="#">Peta Persebaran Keluarga Miskin Pada Kel. Koto Panjang, Kec. Tanjung Harapan, Kota Solok</a>
+							<select name="select_data" id="select_data" class="pull-right">
+								<option value="" disabled selected>Pilih Data</option>
+								<option value="0">Keseluruhan</option>
+								<option value="1">RW 01</option>
+								<option value="2">RW 02</option>
+								<option value="3">RW 03</option>
+							</select>
 						</h4>
 
 						<br>
 
-						<div id="map" style="width: 100%; height: 850px;"></div>
+						<div id="map" style="width: 100%; height: 850px;"></div><br> 
 
-						<br><br><br>
+						<p>
+							<strong>KETERANGAN :</strong>
+							<img src="assets/img/marker1.png" style="height: 35px; width: 30px;"> RW 01, 
+							<img src="assets/img/marker2.png" style="height: 35px; width: 30px;"> RW 02, 
+							<img src="assets/img/marker3.png" style="height: 35px; width: 30px;"> RW 03, 
+							<img src="assets/img/marker4.png" style="height: 35px; width: 30px;"> Kantor Lurah,
+						</p>
+						
+						<br><br>
 
 						<h4 class="card-title">
 							<a href="#">Tabel Jumlah Penerima Bantuan Pada Kel. Koto Panjang, Kec. Tanjung Harapan, Kota Solok</a>
 						</h4>
 
 						<br>
-
+							
 						<div class="table-responsive">
 								
 							<table class="table table-bordered table-hover table-stripped">
@@ -181,41 +199,41 @@
 	
     <script>
     	var map;
-    	var markerList = <?php echo $listMarker; ?>;
+    	var markers = [];
 
     	function initMap() {
+    		var distanceMatrixService = new google.maps.DistanceMatrixService;
+
     		map = new google.maps.Map(document.getElementById('map'), {
     			center: {lat: -0.7921522, lng: 100.6560294},
     			zoom: 18,
     			styles: styles
     		});
 
-    		var icon = {
-			    url: "assets/img/marker.png",
-			    // scaledSize: new google.maps.Size(50, 50),
-			    // origin: new google.maps.Point(0,0),
-			    // anchor: new google.maps.Point(0, 0)
+			var iconLurah = {
+				url: "assets/img/marker4.png",
 			};
 
-    		$.each(markerList, function(key, data) {
-    			var latLng = new google.maps.LatLng(data.lat, data.long);
-    			var marker = new google.maps.Marker({
-    				position: latLng,
-    				title: data.nama,
-    				icon: icon
-    			});
-    			marker.setMap(map);
-    			var contentStr = '<div class="text-center">';
-    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br><br>' + data.alamat;
-    				contentStr += '<br>' + data.rt_rw;
-    				contentStr += '</div>';
-    			var infowindow = new google.maps.InfoWindow({
-    				content: contentStr
-    			});
-    			marker.addListener('click', function() {
-    				infowindow.open(map, marker);
-    			});
-    		});
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(-0.791992, 100.655094),
+				title: 'Kantor Lurah Koto Panjang',
+				icon: iconLurah
+			});
+
+			marker.setMap(map);
+
+			var contentStr = '<div class="text-center">';
+			contentStr += '<strong>KANTOR LURAH KOTO PANJANG</strong><br>';
+			contentStr += '<br>Koto Panjang, Tj. Harapan, Kota Solok, Sumatera Barat 27317';
+			contentStr += '</div>';
+			var infowindow = new google.maps.InfoWindow({
+				content: contentStr
+			});
+			marker.addListener('click', function() {
+				infowindow.open(map, marker);
+			});
+
+    		setAllPenerimaMarker();
 
     		var kelKotoPanjang = new google.maps.Polygon({
     			paths: kelKotoPanjangCoords,
@@ -227,6 +245,212 @@
     		});
 
     		kelKotoPanjang.setMap(map);
+    	}
+
+    	function setAllPenerimaMarker() {
+    		deleteMarkers();
+    		var markerList = <?php echo $listMarker; ?>;
+
+    		var icon1 = {
+			    url: "assets/img/marker1.png",
+			};
+
+			var icon2 = {
+			    url: "assets/img/marker2.png",
+			};
+
+			var icon3 = {
+			    url: "assets/img/marker3.png",
+			};
+
+    		$.each(markerList, function(key, data) {
+    			var distance = '';
+    			var duration = '';
+    			var latLng = new google.maps.LatLng(data.lat, data.long);
+
+    			if (data.rw == '01') {
+    				var marker = new google.maps.Marker({
+    					position: latLng,
+    					title: data.nama,
+    					icon: icon1
+    				});
+    			} else if(data.rw == '02') {
+    				var marker = new google.maps.Marker({
+    					position: latLng,
+    					title: data.nama,
+    					icon: icon2
+    				});
+    			} else if(data.rw == '03') {
+    				var marker = new google.maps.Marker({
+    					position: latLng,
+    					title: data.nama,
+    					icon: icon3
+    				});
+    			}
+
+    			markers.push(marker);
+
+    			var pointA = new google.maps.LatLng(-0.791992, 100.655094);
+    			var pointB = new google.maps.LatLng(data.lat, data.long);
+
+    			var x = google.maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
+    			var distance = x.toFixed(2);
+    			
+    			marker.setMap(map);
+    			var contentStr = '<div class="text-center">';
+    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br><br>' + data.alamat;
+    				contentStr += '<br>' + data.rt_rw + '<br>';
+    				contentStr += 'Dari Kantor Lurah : ' + distance + ' m';
+    				contentStr += '</div>';
+    			var infowindow = new google.maps.InfoWindow({
+    				content: contentStr
+    			});
+    			marker.addListener('click', function() {
+    				infowindow.open(map, marker);
+    			});
+    		});
+    	}
+
+    	function setMarkerRw01() {
+    		deleteMarkers();
+    		var markerList = <?php echo $listMarkerRw01; ?>;
+
+    		var icon = {
+			    url: "assets/img/marker1.png",
+			};
+
+			$.each(markerList, function(key, data) {
+    			var distance = '';
+    			var duration = '';
+    			var latLng = new google.maps.LatLng(data.lat, data.long);
+
+    			var marker = new google.maps.Marker({
+    				position: latLng,
+    				title: data.nama,
+    				icon: icon
+    			});
+
+    			markers.push(marker);
+
+    			var pointA = new google.maps.LatLng(-0.791992, 100.655094);
+    			var pointB = new google.maps.LatLng(data.lat, data.long);
+
+    			var x = google.maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
+    			var distance = x.toFixed(2);
+    			
+    			marker.setMap(map);
+    			var contentStr = '<div class="text-center">';
+    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br><br>' + data.alamat;
+    				contentStr += '<br>' + data.rt_rw + '<br>';
+    				contentStr += 'Dari Kantor Lurah : ' + distance + ' m';
+    				contentStr += '</div>';
+    			var infowindow = new google.maps.InfoWindow({
+    				content: contentStr
+    			});
+    			marker.addListener('click', function() {
+    				infowindow.open(map, marker);
+    			});
+    		});
+
+    	}
+
+    	function setMarkerRw02() {
+    		deleteMarkers();
+    		var markerList = <?php echo $listMarkerRw02; ?>;
+
+    		var icon = {
+			    url: "assets/img/marker2.png",
+			};
+
+			$.each(markerList, function(key, data) {
+    			var distance = '';
+    			var duration = '';
+    			var latLng = new google.maps.LatLng(data.lat, data.long);
+
+    			var marker = new google.maps.Marker({
+    				position: latLng,
+    				title: data.nama,
+    				icon: icon
+    			});
+
+    			markers.push(marker);
+
+    			var pointA = new google.maps.LatLng(-0.791992, 100.655094);
+    			var pointB = new google.maps.LatLng(data.lat, data.long);
+
+    			var x = google.maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
+    			var distance = x.toFixed(2);
+    			
+    			marker.setMap(map);
+    			var contentStr = '<div class="text-center">';
+    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br><br>' + data.alamat;
+    				contentStr += '<br>' + data.rt_rw + '<br>';
+    				contentStr += 'Dari Kantor Lurah : ' + distance + ' m';
+    				contentStr += '</div>';
+    			var infowindow = new google.maps.InfoWindow({
+    				content: contentStr
+    			});
+    			marker.addListener('click', function() {
+    				infowindow.open(map, marker);
+    			});
+    		});
+    	}
+
+    	function setMarkerRw03() {
+    		deleteMarkers();
+    		var markerList = <?php echo $listMarkerRw03; ?>;
+
+    		var icon = {
+			    url: "assets/img/marker3.png",
+			};
+
+			$.each(markerList, function(key, data) {
+    			var distance = '';
+    			var duration = '';
+    			var latLng = new google.maps.LatLng(data.lat, data.long);
+
+    			var marker = new google.maps.Marker({
+    				position: latLng,
+    				title: data.nama,
+    				icon: icon
+    			});
+
+    			markers.push(marker);
+
+    			var pointA = new google.maps.LatLng(-0.791992, 100.655094);
+    			var pointB = new google.maps.LatLng(data.lat, data.long);
+
+    			var x = google.maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
+    			var distance = x.toFixed(2);
+    			
+    			marker.setMap(map);
+    			var contentStr = '<div class="text-center">';
+    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br><br>' + data.alamat;
+    				contentStr += '<br>' + data.rt_rw + '<br>';
+    				contentStr += 'Dari Kantor Lurah : ' + distance + ' m';
+    				contentStr += '</div>';
+    			var infowindow = new google.maps.InfoWindow({
+    				content: contentStr
+    			});
+    			marker.addListener('click', function() {
+    				infowindow.open(map, marker);
+    			});
+    		});
+    	}
+
+    	function setMapOnAll(map) {
+    		for (var i = 0; i < markers.length; i++) {
+    			markers[i].setMap(map);
+    		}
+    	}
+
+    	function clearMarkers() {
+    		setMapOnAll(null);
+    	}
+
+    	function deleteMarkers() {
+    		clearMarkers();
+    		markers = [];
     	}
 
     	var kelKotoPanjangCoords = [
@@ -555,7 +779,7 @@
 		    }
 		]
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDnqIloh4KN9gJepqJnsHlLofNif5Ic04&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDnqIloh4KN9gJepqJnsHlLofNif5Ic04&callback=initMap&libraries=geometry"" async defer></script>
 
 	<script src="assets/vendors/material-kit-pro/assets/js/jquery.min.js" type="text/javascript"></script>
 	<script src="assets/vendors/material-kit-pro/assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -567,6 +791,23 @@
 	<script src="assets/vendors/material-kit-pro/assets/js/bootstrap-tagsinput.js"></script>
 	<script src="assets/vendors/material-kit-pro/assets/js/jasny-bootstrap.min.js"></script>
 	<script src="assets/vendors/material-kit-pro/assets/js/material-kit.js" type="text/javascript"></script>
+
+	<script>
+		$(function(){
+			$('#select_data').on('change', function(){
+				var dataVal = $(this).val();
+				if (dataVal == '0') {
+					setAllPenerimaMarker();
+				} else if (dataVal == '1') {
+					setMarkerRw01();
+				} else if (dataVal == '2') {
+					setMarkerRw02();
+				} else if (dataVal == '3') {
+					setMarkerRw03();
+				}
+			});
+		});
+	</script>
 
 </body>
 </html>

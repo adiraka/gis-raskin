@@ -70,6 +70,88 @@
 			$listMarker[$index]['no_kk'] = $data['no_kk'];
 			$listMarker[$index]['nama'] = $data['kepala_keluarga']; 
 			$listMarker[$index]['alamat'] = $data['alamat'];
+			$listMarker[$index]['rw'] = $data['nama_rw'];
+			$listMarker[$index]['rt_rw'] = 'RT '.$data['nama_rt'].' RW '.$data['nama_rw'];
+			$listMarker[$index]['bantuan'] = $data['nama_bantuan'].' '.$data['banyak_bantuan'].$data['satuan'];
+			$listMarker[$index]['lat'] = $data['latitude'];
+			$listMarker[$index]['long'] = $data['longitude'];
+			$index++;
+		}
+
+		return json_encode($listMarker);
+	}
+
+	function getMapMarkerListRw01() {
+		$conn = koneksi();
+		$listMarker = [];
+
+		$index = 0;
+
+		$query = "
+			SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
+			FROM penerima, rw, rt, bantuan 
+			WHERE rw.id = rt.rw_id AND rt.id = penerima.rt_id AND bantuan.id = penerima.bantuan_id AND rw.id = '1'
+		";
+		$procs = mysqli_query($conn, $query);
+		while ($data = mysqli_fetch_array($procs)) {
+			$listMarker[$index]['no_kk'] = $data['no_kk'];
+			$listMarker[$index]['nama'] = $data['kepala_keluarga']; 
+			$listMarker[$index]['alamat'] = $data['alamat'];
+			$listMarker[$index]['rw'] = $data['nama_rw'];
+			$listMarker[$index]['rt_rw'] = 'RT '.$data['nama_rt'].' RW '.$data['nama_rw'];
+			$listMarker[$index]['bantuan'] = $data['nama_bantuan'].' '.$data['banyak_bantuan'].$data['satuan'];
+			$listMarker[$index]['lat'] = $data['latitude'];
+			$listMarker[$index]['long'] = $data['longitude'];
+			$index++;
+		}
+
+		return json_encode($listMarker);
+	}
+
+	function getMapMarkerListRw02() {
+		$conn = koneksi();
+		$listMarker = [];
+
+		$index = 0;
+
+		$query = "
+			SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
+			FROM penerima, rw, rt, bantuan 
+			WHERE rw.id = rt.rw_id AND rt.id = penerima.rt_id AND bantuan.id = penerima.bantuan_id AND rw.id = '2'
+		";
+		$procs = mysqli_query($conn, $query);
+		while ($data = mysqli_fetch_array($procs)) {
+			$listMarker[$index]['no_kk'] = $data['no_kk'];
+			$listMarker[$index]['nama'] = $data['kepala_keluarga']; 
+			$listMarker[$index]['alamat'] = $data['alamat'];
+			$listMarker[$index]['rw'] = $data['nama_rw'];
+			$listMarker[$index]['rt_rw'] = 'RT '.$data['nama_rt'].' RW '.$data['nama_rw'];
+			$listMarker[$index]['bantuan'] = $data['nama_bantuan'].' '.$data['banyak_bantuan'].$data['satuan'];
+			$listMarker[$index]['lat'] = $data['latitude'];
+			$listMarker[$index]['long'] = $data['longitude'];
+			$index++;
+		}
+
+		return json_encode($listMarker);
+	}
+
+	function getMapMarkerListRw03() {
+		$conn = koneksi();
+		$listMarker = [];
+
+		$index = 0;
+
+		$query = "
+			SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
+			FROM penerima, rw, rt, bantuan 
+			WHERE rw.id = rt.rw_id AND rt.id = penerima.rt_id AND bantuan.id = penerima.bantuan_id AND rw.id = '3'
+		";
+		$procs = mysqli_query($conn, $query);
+		while ($data = mysqli_fetch_array($procs)) {
+			$listMarker[$index]['no_kk'] = $data['no_kk'];
+			$listMarker[$index]['nama'] = $data['kepala_keluarga']; 
+			$listMarker[$index]['alamat'] = $data['alamat'];
+			$listMarker[$index]['rw'] = $data['nama_rw'];
 			$listMarker[$index]['rt_rw'] = 'RT '.$data['nama_rt'].' RW '.$data['nama_rw'];
 			$listMarker[$index]['bantuan'] = $data['nama_bantuan'].' '.$data['banyak_bantuan'].$data['satuan'];
 			$listMarker[$index]['lat'] = $data['latitude'];

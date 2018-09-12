@@ -13,7 +13,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="?page=beranda"> STAFF</a>
+            <a class="navbar-brand" href="?page=beranda"><?php echo strtoupper($_SESSION['akses']); ?></a>
         </div>
     </div>
 </nav>
