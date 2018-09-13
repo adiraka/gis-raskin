@@ -77,6 +77,10 @@
                                     <?php endforeach ?>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label" for="foto">Foto Rumah</label>
+                                <input type="file" name="foto" id="foto" class="form-control">
+                            </div>
                             <br>
                             <a href="?page=kelola-penerima" class="btn btn-default"><i class="material-icons">table_chart</i></a>
                             <button type="reset" class="btn btn-default"><i class="material-icons">refresh</i></button>
