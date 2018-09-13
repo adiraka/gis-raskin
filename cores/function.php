@@ -61,7 +61,7 @@
 		$index = 0;
 
 		$query = "
-			SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
+			SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, penerima.foto_rumah, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
 			FROM penerima, rw, rt, bantuan 
 			WHERE rw.id = rt.rw_id AND rt.id = penerima.rt_id AND bantuan.id = penerima.bantuan_id
 		";
@@ -75,6 +75,7 @@
 			$listMarker[$index]['bantuan'] = $data['nama_bantuan'].' '.$data['banyak_bantuan'].$data['satuan'];
 			$listMarker[$index]['lat'] = $data['latitude'];
 			$listMarker[$index]['long'] = $data['longitude'];
+			$listMarker[$index]['foto'] = $data['foto_rumah'];
 			$index++;
 		}
 
@@ -88,7 +89,7 @@
 		$index = 0;
 
 		$query = "
-			SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
+			SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, penerima.foto_rumah, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
 			FROM penerima, rw, rt, bantuan 
 			WHERE rw.id = rt.rw_id AND rt.id = penerima.rt_id AND bantuan.id = penerima.bantuan_id AND rw.id = '1'
 		";
@@ -102,6 +103,7 @@
 			$listMarker[$index]['bantuan'] = $data['nama_bantuan'].' '.$data['banyak_bantuan'].$data['satuan'];
 			$listMarker[$index]['lat'] = $data['latitude'];
 			$listMarker[$index]['long'] = $data['longitude'];
+			$listMarker[$index]['foto'] = $data['foto_rumah'];
 			$index++;
 		}
 
@@ -115,7 +117,7 @@
 		$index = 0;
 
 		$query = "
-			SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
+			SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, penerima.foto_rumah, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
 			FROM penerima, rw, rt, bantuan 
 			WHERE rw.id = rt.rw_id AND rt.id = penerima.rt_id AND bantuan.id = penerima.bantuan_id AND rw.id = '2'
 		";
@@ -129,6 +131,7 @@
 			$listMarker[$index]['bantuan'] = $data['nama_bantuan'].' '.$data['banyak_bantuan'].$data['satuan'];
 			$listMarker[$index]['lat'] = $data['latitude'];
 			$listMarker[$index]['long'] = $data['longitude'];
+			$listMarker[$index]['foto'] = $data['foto_rumah'];
 			$index++;
 		}
 
@@ -142,7 +145,7 @@
 		$index = 0;
 
 		$query = "
-			SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
+			SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, penerima.foto_rumah, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
 			FROM penerima, rw, rt, bantuan 
 			WHERE rw.id = rt.rw_id AND rt.id = penerima.rt_id AND bantuan.id = penerima.bantuan_id AND rw.id = '3'
 		";
@@ -156,6 +159,7 @@
 			$listMarker[$index]['bantuan'] = $data['nama_bantuan'].' '.$data['banyak_bantuan'].$data['satuan'];
 			$listMarker[$index]['lat'] = $data['latitude'];
 			$listMarker[$index]['long'] = $data['longitude'];
+			$listMarker[$index]['foto'] = $data['foto_rumah'];
 			$index++;
 		}
 

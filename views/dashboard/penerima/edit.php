@@ -23,7 +23,7 @@
                             $procs = mysqli_query($conn, $query);
                             $data = mysqli_fetch_assoc($procs);
                         ?>
-                        <form action="cores/dashboard/penerima/edit-penerima-process.php" method="post" accept-charset="utf-8">
+                        <form action="cores/dashboard/penerima/edit-penerima-process.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                             <input type="hidden" name="penerima_id" id="penerima_id" value="<?php echo $penerimaID ?>">
                             <div class="form-group label-floating">
                                 <label class="control-label" for="no_kk">Nomor Kartu Keluarga</label>
@@ -91,6 +91,23 @@
                                         <option value="<?php echo $value['id'] ?>"><?php echo $value['nama_bantuan'].' '.$value['banyak_bantuan'].' '.$value['satuan'].' ( Rp '.number_format($value['nominal']).' )' ?></option>
                                     <?php endforeach ?>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="foto">Upload Foto Rumah</label><br><br>
+                                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail">
+                                        <img src="assets/img/image_placeholder.jpg" alt="...">
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                    <div>
+                                        <span class="btn btn-info btn-round btn-file">
+                                            <span class="fileinput-new">Pilih Gambar Rumah</span>
+                                            <span class="fileinput-exists">Ubah</span>
+                                            <input type="file" name="foto" id="foto" />
+                                        </span>
+                                        <a href="extended.html#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Hapus</a>
+                                    </div>
+                                </div>
                             </div>
                             <br>
                             <a href="?page=kelola-penerima" class="btn btn-default"><i class="material-icons">table_chart</i></a>

@@ -36,6 +36,10 @@
 		$_SESSION['gagal'] = 'Kolom Jenis Bantuan tidak boleh kosong.';
 		header('Location:../../../dashboard.php?page=tambah-penerima'); 
 		die();
+	} elseif ($_FILES['foto']['name'] == NULL) {
+		$_SESSION['gagal'] = 'Foto Rumah Penerima Bantuan tidak boleh kosong.';
+		header('Location:../../../dashboard.php?page=tambah-penerima'); 
+		die();
 	}
 
 	$conn = koneksi();
@@ -48,7 +52,35 @@
 	$rt_id = sanitizeThis($_POST['rt_id']);
 	$bantuan_id = sanitizeThis($_POST['bantuan_id']);
 
-	$query = "INSERT INTO penerima (no_kk, kepala_keluarga, alamat, telepon, rt_id, bantuan_id, latitude, longitude) VALUES ('$no_kk', '$kepala_keluarga', '$alamat', '$telepon', '$rt_id', '$bantuan_id', '$latitude', '$longitude')";
+	$file_type = strtolower(pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
+	$file_name = sanitizeThis($_FILES['foto']['name']);
+	$file_size = $_FILES['foto']['size'];
+	$target_dir = '../../../assets/img/foto_rumah/';
+	$check = getimagesize($_FILES['foto']['tmp_name']);
+
+	if ($check == false) {
+		$_SESSION['gagal'] = 'File yang diinputkan bukan merupakan file gambar!';
+		header('Location:../../../dashboard.php?page=tambah-penerima');
+		die();
+	}
+
+	if ($file_size > 2000000) {	
+		$_SESSION['gagal'] = 'Ukuran file gambar maksimal 2MB!';
+		header('Location:../../../dashboard.php?page=tambah-penerima');
+		die();
+	}
+
+	$new_file_name = substr(sha1(time()), 0, 20).'.'.$file_type;
+	$new_target_file = $target_dir.$new_file_name;
+	$upload_file = move_uploaded_file($_FILES['foto']['tmp_name'], $new_target_file);
+
+	if (!$upload_file) {	
+		$_SESSION['gagal'] = 'Telah terjadi kesalahan dalam mengupload file gambar!';
+		header('Location:../../../dashboard.php?page=tambah-penerima');
+		die();
+	}
+
+	$query = "INSERT INTO penerima (no_kk, kepala_keluarga, alamat, telepon, rt_id, bantuan_id, latitude, longitude, foto_rumah) VALUES ('$no_kk', '$kepala_keluarga', '$alamat', '$telepon', '$rt_id', '$bantuan_id', '$latitude', '$longitude', '$new_file_name')";
 	$procs = mysqli_query($conn, $query);
 
 	if ($procs) {

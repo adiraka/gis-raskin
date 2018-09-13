@@ -20,7 +20,7 @@
                         <?php  
                             $list_data = [];
                             $query = "
-                                SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
+                                SELECT penerima.id, penerima.no_kk, penerima.kepala_keluarga, penerima.alamat, penerima.telepon, penerima.latitude, penerima.longitude, penerima.foto_rumah, rw.nama_rw, rt.nama_rt, bantuan.nama_bantuan, bantuan.banyak_bantuan, bantuan.satuan, bantuan.nominal 
                                 FROM penerima, rw, rt, bantuan 
                                 WHERE rw.id = rt.rw_id AND rt.id = penerima.rt_id AND bantuan.id = penerima.bantuan_id
                             ";
@@ -40,6 +40,7 @@
                                 <th>Jenis Bantuan</th>
                                 <th>Latitude</th>
                                 <th>Longitude</th>
+                                <th>Foto Rumah</th>
                                 <th class="disabled-sorting">Aksi</th>
                             </tr>
                         </thead>
@@ -55,6 +56,9 @@
                                     <td><?php echo $value['nama_bantuan'].' '.$value['banyak_bantuan'].$value['satuan'].' (Rp.'.number_format($value['nominal']).')' ?></td>
                                     <td><?php echo $value['latitude'] ?></td>
                                     <td><?php echo $value['longitude'] ?></td>
+                                    <td>
+                                        <img src="assets/img/foto_rumah/<?php echo $value['foto_rumah'] ?>" style="height: 200px; width: auto;">
+                                    </td>
                                     <td>
                                         <a href="?page=ubah-penerima&id=<?php echo $value['id'] ?>" class="btn btn-round btn-simple btn-success btn-icon"><i class="material-icons">create</i></a>
                                         <a href="?page=hapus-penerima&id=<?php echo $value['id'] ?>" class="btn btn-round btn-simple btn-danger btn-icon"><i class="material-icons">close</i></a>

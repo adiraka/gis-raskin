@@ -298,7 +298,9 @@
     			
     			marker.setMap(map);
     			var contentStr = '<div class="text-center">';
-    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br><br>' + data.alamat;
+    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br>';
+    				contentStr += '<br><img src="assets/img/foto_rumah/' + data.foto + '" style="height:200px; width: auto;"><br>';
+    				contentStr += '<br>' + data.alamat;
     				contentStr += '<br>' + data.rt_rw + '<br>';
     				contentStr += 'Dari Kantor Lurah : ' + distance + ' m';
     				contentStr += '</div>';
@@ -340,7 +342,9 @@
     			
     			marker.setMap(map);
     			var contentStr = '<div class="text-center">';
-    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br><br>' + data.alamat;
+    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br>';
+    				contentStr += '<br><img src="assets/img/foto_rumah/' + data.foto + '" style="height:200px; width: auto;"><br>';
+    				contentStr += '<br>' + data.alamat;
     				contentStr += '<br>' + data.rt_rw + '<br>';
     				contentStr += 'Dari Kantor Lurah : ' + distance + ' m';
     				contentStr += '</div>';
@@ -383,7 +387,9 @@
     			
     			marker.setMap(map);
     			var contentStr = '<div class="text-center">';
-    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br><br>' + data.alamat;
+    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br>';
+    				contentStr += '<br><img src="assets/img/foto_rumah/' + data.foto + '" style="height:200px; width: auto;"><br>';
+    				contentStr += '<br>' + data.alamat;
     				contentStr += '<br>' + data.rt_rw + '<br>';
     				contentStr += 'Dari Kantor Lurah : ' + distance + ' m';
     				contentStr += '</div>';
@@ -425,7 +431,9 @@
     			
     			marker.setMap(map);
     			var contentStr = '<div class="text-center">';
-    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br><br>' + data.alamat;
+    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br>';
+    				contentStr += '<br><img src="assets/img/foto_rumah/' + data.foto + '" style="height:200px; width: auto;"><br>';
+    				contentStr += '<br>' + data.alamat;
     				contentStr += '<br>' + data.rt_rw + '<br>';
     				contentStr += 'Dari Kantor Lurah : ' + distance + ' m';
     				contentStr += '</div>';

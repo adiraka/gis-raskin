@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <p>Isi form berikut dengan data yang valid :</p><br>
-                        <form action="cores/dashboard/penerima/add-penerima-process.php" method="post" accept-charset="utf-8">
+                        <form action="cores/dashboard/penerima/add-penerima-process.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                             <div class="form-group label-floating">
                                 <label class="control-label" for="no_kk">Nomor Kartu Keluarga</label>
                                 <input type="text" class="form-control" name="no_kk" id="no_kk">
@@ -78,8 +78,21 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="foto">Foto Rumah</label>
-                                <input type="file" name="foto" id="foto" class="form-control">
+                                <label class="control-label" for="foto">Upload Foto Rumah</label><br><br>
+                                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail">
+                                        <img src="assets/img/image_placeholder.jpg" alt="...">
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                    <div>
+                                        <span class="btn btn-info btn-round btn-file">
+                                            <span class="fileinput-new">Pilih Gambar Rumah</span>
+                                            <span class="fileinput-exists">Ubah</span>
+                                            <input type="file" name="foto" id="foto" />
+                                        </span>
+                                        <a href="extended.html#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Hapus</a>
+                                    </div>
+                                </div>
                             </div>
                             <br>
                             <a href="?page=kelola-penerima" class="btn btn-default"><i class="material-icons">table_chart</i></a>

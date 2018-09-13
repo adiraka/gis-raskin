@@ -139,6 +139,7 @@
     <script src="assets/vendors/material-dashboard-pro/assets/js/jquery.validate.min.js"></script>
     <script src="assets/vendors/material-dashboard-pro/assets/js/jquery.tagsinput.js"></script>
     <script src="assets/vendors/material-dashboard-pro/assets/js/material-dashboard.js"></script>
+    <script src="assets/vendors/material-dashboard-pro/assets/js/jasny-bootstrap.min.js"></script>
     <script src="assets/vendors/material-dashboard-pro/assets/js/jquery.datatables.js"></script>
     <script src="assets/vendors/material-dashboard-pro/assets/js/jquery.select-bootstrap.js"></script>
     <script src="assets/vendors/material-dashboard-pro/assets/js/moment.min.js"></script>
