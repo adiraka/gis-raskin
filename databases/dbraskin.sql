@@ -65,25 +65,26 @@ CREATE TABLE `penerima` (
   `bantuan_id` int(11) NOT NULL,
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
+  `foto_rumah` varchar(255) DEFAULT 'default.png',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 /*Data for the table `penerima` */
 
-insert  into `penerima`(`id`,`no_kk`,`kepala_keluarga`,`alamat`,`telepon`,`rt_id`,`bantuan_id`,`latitude`,`longitude`) values 
-(1,'1372022102070002','Budi Harianto B','Koto Panjang','081268280648',2,2,-0.790625,100.656),
-(2,'1372726103690001','Leni Aroza','Koto Panjang','081343214321',2,2,-0.791547,100.657),
-(3,'1372025509780021','Joni Amza','Koto Panjang','085257468228',2,2,-0.79302,100.657),
-(4,'1372002430888000','Aidil Putra','Koto Panjang','0812345678908',3,2,-0.792156,100.655),
-(5,'1372020109080007','Afrizal','Koto Panjang','081390872167',3,2,-0.7923,100.655),
-(6,'1372021810120001','Elfendo','Koto Panjang','081278652345',3,2,-0.792415,0.655436),
-(7,'1372020907680001','Busrizal','Koto Panjang','085234567789',4,2,-0.791728,100.657),
-(8,'1372021609080006','Hendri Faisal','Koto Panjang','085276352345',4,2,-0.79186,100.657),
-(9,'1372023003070017','Edi Warman','Koto Panjang','081364779870',5,2,-0.792467,100.656),
-(10,'1372021207110002','Syamsul Asman','Koto Panjang','0812345678987',5,2,-0.79253,100.656),
-(11,'1372012205060022','Novrizal','Koto Panjang','081234567877',5,2,-0.792645,0.655801),
-(12,'1372021501810006','Yandi Oktavika','Koto Panjang','0812345678886',5,2,-0.792679,100.656),
-(13,'3720202010700011','Elfi','Koto Panjang','081280872167',5,2,-0.792754,100.656);
+insert  into `penerima`(`id`,`no_kk`,`kepala_keluarga`,`alamat`,`telepon`,`rt_id`,`bantuan_id`,`latitude`,`longitude`,`foto_rumah`) values 
+(1,'1372022102070002','Budi Harianto B','Koto Panjang','081268280648',2,2,-0.790625,100.656,'default.png'),
+(2,'1372726103690001','Leni Aroza','Koto Panjang','081343214321',2,2,-0.791547,100.657,'default.png'),
+(3,'1372025509780021','Joni Amza','Koto Panjang','085257468228',2,2,-0.79302,100.657,'default.png'),
+(4,'1372002430888000','Aidil Putra','Koto Panjang','0812345678908',3,2,-0.792156,100.655,'default.png'),
+(5,'1372020109080007','Afrizal','Koto Panjang','081390872167',3,2,-0.7923,100.655,'default.png'),
+(6,'1372021810120001','Elfendo','Koto Panjang','081278652345',3,2,-0.792415,0.655436,'default.png'),
+(7,'1372020907680001','Busrizal','Koto Panjang','085234567789',4,2,-0.791728,100.657,'default.png'),
+(8,'1372021609080006','Hendri Faisal','Koto Panjang','085276352345',4,2,-0.79186,100.657,'default.png'),
+(9,'1372023003070017','Edi Warman','Koto Panjang','081364779870',5,2,-0.792467,100.656,'default.png'),
+(10,'1372021207110002','Syamsul Asman','Koto Panjang','0812345678987',5,2,-0.79253,100.656,'default.png'),
+(11,'1372012205060022','Novrizal','Koto Panjang','081234567877',5,2,-0.792645,0.655801,'default.png'),
+(12,'1372021501810006','Yandi Oktavika','Koto Panjang','0812345678886',5,2,-0.792679,100.656,'default.png'),
+(13,'3720202010700011','Elfi','Koto Panjang','081280872167',5,2,-0.792754,100.656,'default.png');
 
 /*Table structure for table `rt` */
 
