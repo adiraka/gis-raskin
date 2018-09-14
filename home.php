@@ -202,7 +202,8 @@
     	var markers = [];
 
     	function initMap() {
-    		var distanceMatrixService = new google.maps.DistanceMatrixService;
+    		var directionsDisplay = new google.maps.DirectionsRenderer();
+    		var directionsService = new google.maps.DirectionsService();
 
     		map = new google.maps.Map(document.getElementById('map'), {
     			center: {lat: -0.7921522, lng: 100.6560294},
@@ -264,9 +265,8 @@
 			};
 
     		$.each(markerList, function(key, data) {
-    			var distance = '';
-    			var duration = '';
     			var latLng = new google.maps.LatLng(data.lat, data.long);
+    			var distanceMatrixService = new google.maps.DistanceMatrixService;
 
     			if (data.rw == '01') {
     				var marker = new google.maps.Marker({
@@ -293,24 +293,69 @@
     			var pointA = new google.maps.LatLng(-0.791992, 100.655094);
     			var pointB = new google.maps.LatLng(data.lat, data.long);
 
-    			var x = google.maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
-    			var distance = x.toFixed(2);
-    			
+    			var distance;
+    			var duration;
+
+    			var a = [];
     			marker.setMap(map);
-    			var contentStr = '<div class="text-center">';
-    				contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br>';
-    				contentStr += '<br><img src="assets/img/foto_rumah/' + data.foto + '" style="height:200px; width: auto;"><br>';
-    				contentStr += '<br>' + data.alamat;
-    				contentStr += '<br>' + data.rt_rw + '<br>';
-    				contentStr += 'Dari Kantor Lurah : ' + distance + ' m';
-    				contentStr += '</div>';
-    			var infowindow = new google.maps.InfoWindow({
-    				content: contentStr
+
+    			// var x = google.maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
+    			// var distance = x.toFixed(2);
+
+    			distanceMatrixService.getDistanceMatrix({
+    				origins: [pointA],
+    				destinations: [pointB],
+    				travelMode: 'DRIVING',
+    				unitSystem: google.maps.UnitSystem.METRIC,
+    				avoidHighways: false,
+    				avoidTolls: false
+    			}, function(response, status){
+    				if (status !== 'OK') {
+    					alert('Telah terjadi kesalahan.');
+    				} else {
+    					var distance = response.rows[0].elements[0].distance.text;
+    					var duration = response.rows[0].elements[0].duration.text;
+
+    					var contentStr = '<div class="text-center">';
+    					contentStr += '<strong>' + data.nama + '<br>' + data.no_kk + '<br>' + data.bantuan + '</strong><br>';
+    					contentStr += '<br><img src="assets/img/foto_rumah/' + data.foto + '" style="height:200px; width: auto;"><br>';
+    					contentStr += '<br>' + data.alamat;
+    					contentStr += '<br>' + data.rt_rw + '<br>';
+    					contentStr += 'Jarak Kantor Lurah : ' + distance + '<br>';
+    					contentStr += 'Durasi : ' + duration;
+    					contentStr += '</div>';
+    					var infowindow = new google.maps.InfoWindow({
+    						content: contentStr
+    					});
+    					marker.addListener('click', function() {
+    						setDirectionMap(pointA, pointB, map);
+    						infowindow.open(map, marker);
+    					});
+
+    				}
     			});
-    			marker.addListener('click', function() {
-    				infowindow.open(map, marker);
-    			});
+
+    			
+    			
     		});
+    	}
+
+    	function setDirectionMap(pointA, pointB, map) {
+    		var directionsDisplay = new google.maps.DirectionsRenderer();
+    		var directionsService = new google.maps.DirectionsService();
+
+    		directionsService.route({
+    			origin: pointB,
+    			destination: pointA,
+    			travelMode: google.maps.TravelMode['DRIVING'],
+    		}, function(response, status) {
+    			if (status == 'OK') {
+    				directionsDisplay.setDirections(response);
+    			} else {
+    				window.alert('Directions request failed due to ' + status);
+    			}
+    		});
+    		directionsDisplay.setMap(map);
     	}
 
     	function setMarkerRw01() {
@@ -787,7 +832,7 @@
 		    }
 		]
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDnqIloh4KN9gJepqJnsHlLofNif5Ic04&callback=initMap&libraries=geometry"" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDnqIloh4KN9gJepqJnsHlLofNif5Ic04&callback=initMap&libraries=geometry" async defer></script>
 
 	<script src="assets/vendors/material-kit-pro/assets/js/jquery.min.js" type="text/javascript"></script>
 	<script src="assets/vendors/material-kit-pro/assets/js/bootstrap.min.js" type="text/javascript"></script>
