@@ -90,7 +90,7 @@
 							<th class="text-center">NO. KK</th>
 							<th class="text-center">NAMA</th>
 							<th class="text-center">ALAMAT</th>
-							<th class="text-center">RT/RW</th>
+							<!-- <th class="text-center">RT/RW</th> -->
 							<th class="text-center">STATUS</th>
 						</tr>
 					</thead>
@@ -101,7 +101,7 @@
 								<td class="text-center"><?php echo $value['kk'] ?></td>
 								<td><?php echo $value['nama'] ?></td>
 								<td><?php echo $value['alamat'] ?></td>
-								<td class="text-center"><?php echo 'RT '.$value['rt'].' RW '.$value['rw'] ?></td>
+								<!-- <td class="text-center"><?php echo 'RT '.$value['rt'].' RW '.$value['rw'] ?></td> -->
 								<td class="text-center"><?php echo $value['status']['text'] ?></td>
 								<?php  
 									if ($value['status']['status'] == 1) {
